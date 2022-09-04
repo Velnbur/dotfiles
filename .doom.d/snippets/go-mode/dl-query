@@ -1,0 +1,17 @@
+# -*- mode: snippet -*-
+# name: DL qouery to DB
+# key: dl-query
+# condition: t
+# --
+
+type ${1:DataType} struct {
+	ID int64 \`db:"id" structs:"-"\`
+	${2:Field} ${3:string} \`db:"${4:field}" structs:"$4"\`
+}
+
+${5://go:generate --case=underscore --name=$1sQ}
+type $1sQ interface {
+	New() $1sQ
+	Create($1) (*$1, error)
+	Get() (*$1, error)
+}
