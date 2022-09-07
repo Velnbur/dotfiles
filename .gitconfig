@@ -1,0 +1,7 @@
+[user]
+	name = Velnbur
+	email = kirillbaybula@gmail.com
+[core]
+	excludesFile = ~/.gitignore
+[url "git@gitlab.com:"]
+    insteadOf = https://gitlab.com/

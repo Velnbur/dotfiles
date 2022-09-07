@@ -1,0 +1,48 @@
+# -*- mode: snippet -*-
+# name: DL config interface
+# key: dl-config
+# condition: t
+# --
+package config
+
+import (
+	"gitlab.com/distributed_lab/figure"
+	"gitlab.com/distributed_lab/kit/comfig"
+	"gitlab.com/distributed_lab/kit/kv"
+)
+
+type ${1:InterfaceName} interface {
+	${2:StructName}Cfg() $2Cfg
+}
+
+type $2Cfg struct {
+	${5:Field} ${6:string} `fig:"${7:field}"`
+}
+
+func New$2Cfg(getter kv.Getter) $1 {
+	return &$3{
+		getter: getter,
+	}
+}
+
+type ${3:InterfaceStruct} struct {
+	getter kv.Getter
+	once   comfig.Once
+}
+
+const yaml$1Key = "${4:yaml-key}"
+
+func (c *$3) $2Cfg() $2Cfg {
+	return t.once.Do(func() interface{} {
+		var cfg $2Cfg
+
+		err := figure.Out(&cfg).
+			From(kv.MustGetStringMap(c.getter, yaml$1Key)).
+			Please()
+		if err != nil {
+			panic(err)
+		}
+
+		return cfg
+	}).($2Cfg)
+}

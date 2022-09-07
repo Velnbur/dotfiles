@@ -2,9 +2,7 @@ if [[ -d "$HOME/.cargo" ]]; then
 	source "$HOME/.cargo/env"
 fi
 
-if [[ -d "/opt/homewbrew/bin" ]]; then
-	export PATH="$PATH:/opt/homebrew/bin"
-fi
+export PATH="$PATH:/opt/homebrew/bin"
 
 # Was needed before for emacs ~web-mode~
 alias tidy=/usr/local/bin/tidy
@@ -21,5 +19,5 @@ if [[ -d "$HOME/.emacs.d/bin" ]]; then
 fi
 
 if [[ -d "$HOME/.doom.d" ]]; then
-	export DOOMDIR="$PATH:$HOME/.doom.d"
+	export DOOMDIR="$HOME/.doom.d"
 fi

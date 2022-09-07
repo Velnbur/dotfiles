@@ -6,9 +6,9 @@
 
 (setq doom-font (font-spec :family "Iosevka" :size 15 :weight 'regular))
 
-(setq doom-theme 'doom-plaind)
+(setq doom-theme 'doom-one)
 
-(setq display-line-numbers-type t)
+(setq display-line-numbers-type nil)
 
 (setq org-directory "~/org/")
 
